@@ -110,9 +110,15 @@ cc_library {
         "libhwbinder-impl-internal",
     ],
     min_sdk_version: "29",
+    whole_program_vtables: true,
+    lto: {
+         thin: true,
+     },
     target: {
          android_arm64: {
-             cflags: ["-fsplit-machine-functions"],
+             cflags: ["-fsplit-machine-functions",
+                      "-O3"
+             ],
              ldflags: ["-fsplit-machine-functions"],
          }
      },
